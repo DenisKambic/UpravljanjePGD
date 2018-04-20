@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Prijava uspešna!";
+}
+
+
+
+@if (ViewBag.displayMenu == "Yes")
+{
+    <h1>Pozdravljen administrator! :)</h1>
+	<li>@Html.ActionLink("Upravljaj skupine", "Index", "Role")</li>
+}
+else
+{
+    <h2>  Pozdravljen <strong>@ViewBag.Name</strong> :) kmalu bomo dodali uporabniški pogled</h2>
+}
+

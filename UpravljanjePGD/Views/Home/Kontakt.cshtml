@@ -1,0 +1,36 @@
+﻿@{
+	ViewBag.Title = "Kontaktni podatki";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+	Naslov: Cerovec pri Črešnjevcu 4, 8333 Semič<br />
+	Telefon: 040 399 600<br />
+	<abbr title="Phone">P:</abbr>
+	040 399 600
+</address>
+
+<address>
+	<strong>Kontat:</strong>   <a href="mailto:denis.kambic@gmail.com">Denis.kambic@gmail.com</a><br />
+</address>
+
+<fieldset>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<div id="googleMap" style="height:400px;width:100%;"></div>
+	<script>
+		function myMap() {
+			var myCenter = new google.maps.LatLng(45.654640, 15.244000);
+			var mapProp = { center: myCenter, zoom: 15, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.HYBRID };
+			var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+			var marker = new google.maps.Marker({ position: myCenter });
+			marker.setMap(map);
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH5WrfNmQEZvrMGTNF69xmhTXs3mSEbVE&callback=myMap"></script>
+</fieldset>

@@ -1,0 +1,19 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+@model List<UpravljanjePGD.Models.Post>
+
+@foreach (var Post in Model)
+{
+	<div class="row">
+		<div class="col-md-12">
+			<div style="background:#EEE">
+				<h2>@Post.Title</h2>
+				<div>
+					Objavljeno <i>@Post.Date</i>
+				</div>
+				<p>@Post.Body</p>
+			</div>
+		</div>
+	</div>
+}
