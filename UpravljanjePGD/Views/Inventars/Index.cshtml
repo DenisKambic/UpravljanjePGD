@@ -1,0 +1,113 @@
+﻿@model IEnumerable<UpravljanjePGD.Models.Inventar>
+
+@{
+    ViewBag.Title = "Seznam vseh sredstev!";
+}
+
+<h2></h2>
+
+<p>
+    @Html.ActionLink("Dodaj novo sredstvo", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Name)
+		</th>
+		<td>
+			@Html.DisplayNameFor(model => model.Number)
+		</td>
+		<th>
+			@Html.DisplayNameFor(model => model.Value)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateReceived)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InspectionDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.NextInspectionDate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Expiration)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.State)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		if (DateTime.Now.AddDays(30) >= item.NextInspectionDate)
+		{
+	<tr style="color:red;">
+		<td>
+			@Html.DisplayFor(modelItem => item.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Number)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Value)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateReceived)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.InspectionDate)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.NextInspectionDate)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Expiration)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.State)
+		</td>
+		<td>
+			@Html.ActionLink("Uredi", "Edit", new { id = item.Id }) |
+			@Html.ActionLink("Podrobnosti", "Details", new { id = item.Id }) |
+			@Html.ActionLink("Izbriši", "Delete", new { id = item.Id })
+		</td>
+	</tr>
+		}
+		else
+		{
+	<tr style="color:black;">
+		<td>
+			@Html.DisplayFor(modelItem => item.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Number)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Value)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateReceived)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.InspectionDate)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.NextInspectionDate)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Expiration)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.State)
+		</td>
+		<td>
+			@Html.ActionLink("Uredi", "Edit", new { id = item.Id }) |
+			@Html.ActionLink("Podrobnosti", "Details", new { id = item.Id }) |
+			@Html.ActionLink("Izbriši", "Delete", new { id = item.Id })
+		</td>
+	</tr>
+		}
+	}
+
+</table>

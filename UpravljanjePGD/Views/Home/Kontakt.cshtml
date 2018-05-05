@@ -1,7 +1,4 @@
-﻿@{
-	ViewBag.Title = "Kontaktni podatki";
-}
-<h2>@ViewBag.Title.</h2>
+﻿
 <h3>@ViewBag.Message</h3>
 
 <address>
@@ -26,7 +23,7 @@
 	<script>
 		function myMap() {
 			var myCenter = new google.maps.LatLng(45.654640, 15.244000);
-			var mapProp = { center: myCenter, zoom: 15, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.HYBRID };
+			var mapProp = { center: myCenter, zoom: 16, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.HYBRID };
 			var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 			var marker = new google.maps.Marker({ position: myCenter });
 			marker.setMap(map);

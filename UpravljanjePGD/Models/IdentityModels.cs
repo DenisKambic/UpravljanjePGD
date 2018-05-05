@@ -31,5 +31,7 @@ namespace UpravljanjePGD.Models
         }
 
 		public System.Data.Entity.DbSet<UpravljanjePGD.Models.Post> Posts { get; set; }
+
+		public System.Data.Entity.DbSet<UpravljanjePGD.Models.Inventar> Inventars { get; set; }
 	}
 }

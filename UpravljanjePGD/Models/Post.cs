@@ -11,14 +11,21 @@ namespace UpravljanjePGD.Models
 		[Required]
 		public int Id { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Vnesi naslov!")]
+		[Display(Name = "Naslov")]
 		[StringLength(200)]
 		public string Title { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Vpišite željeno besedilo!")]
+		[Display(Name ="Vsebina")]
+		[DataType(DataType.MultilineText)]
 		public string Body { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Vpišite datum!")]
+		[Display(Name = "Datum")]
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+
 		public DateTime Date { get; set; }
 
 	}

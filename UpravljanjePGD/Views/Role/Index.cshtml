@@ -2,34 +2,31 @@
 @{
 	ViewBag.Title = "Dodaj Skupino";
 }
-<table style=" background-color:#FFFFFF; border: dashed 3px #6D7B8D; padding: 5px;width: 99%;table-layout:fixed;" cellpadding="6" cellspacing="6">
-	<tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
-		<td align="center" colspan="2">
-			<h2> Ustvari skupino</h2>
-		</td>
 
-	</tr>
+	<h2>Upravljanje skupin!</h2>
+
 
 	<tr>
 		<td>
-			<table id="tbrole" style="width:100%; border:dotted 1px; background-color:gainsboro; padding-left:10px;">
+			<table class="table">
 
 				@foreach (var item in Model)
 				{
-					<tr>
-						<td style="width:100%; border:dotted 1px;">
-							@item.Name
-						</td>
-					</tr>}
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.ActionLink("Izbriši", "Delete", new { id=item.Id})
+					</td>
+				</tr>}
 			</table>
 		</td>
-		<td align="right" style="color:#FFFFFF;padding-right:10;">
-
-
-			<h3>   @Html.ActionLink("Klikni za ustvarjanje nove ksupine", "Create", "Role") </h3>
+		<td>
+			<h3>   @Html.ActionLink("Klikni za ustvarjanje nove skupine", "Create", "Role") </h3>
 		</td>
 	</tr>
-</table>
+
 
 
 

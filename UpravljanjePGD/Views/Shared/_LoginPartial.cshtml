@@ -6,7 +6,7 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-	@if (User.IsInRole("Admin")){<li>@Html.ActionLink("Registracija", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>}
+	@if (User.IsInRole("Admin")){<li>@Html.ActionLink("Nov uporabnik", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>}
 	<li>
 		@Html.ActionLink("Pozdravljen " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 	</li>

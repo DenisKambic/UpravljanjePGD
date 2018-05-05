@@ -1,0 +1,19 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+<h2>Izbriši</h2>
+
+<h3>Si prepričan, da želiš to izbrisati?</h3>
+<div>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+	<div class="form-actions no-color">
+		@Html.DisplayFor(m => m.Name)
+		<br />
+		<input type="submit" value="Izbriši" class="btn btn-default" /><br />
+		@Html.ActionLink("Nazaj na seznam", "Index")
+	</div>
+	}
+</div>

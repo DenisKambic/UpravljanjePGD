@@ -6,9 +6,11 @@
     <title>@ViewBag.Title - PGD Črešnjevec</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+	<link rel="icon" href="~/Pictures/icon.ico" type="image/x"/>
 
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,9 +24,17 @@
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Domov", "Index", "Home")</li>
-					<li>@Html.ActionLink("Zgodovina", "Zgodovina", "Home")</li>
+					<li>@Html.ActionLink("O nas", "Zgodovina", "Home")</li>
 					<li>@Html.ActionLink("Kontakt", "Kontakt", "Home")</li>
-					@if (User.IsInRole("Admin")){ <li>@Html.ActionLink("Objavi novico", "Index", "Posts")</li>}
+					@if (User.IsInRole("Admin")){ 
+						<li>@Html.ActionLink("Urejanje Novic", "Index", "Posts")</li>
+						<li>@Html.ActionLink("Skupine", "Index", "Role")</li>
+						<li>@Html.ActionLink("Inventar", "Index", "Inventars")</li>
+					}
+					@if (User.IsInRole("Poveljstvo")){
+						<li>@Html.ActionLink("Objavi novico", "Index", "Posts")</li>
+						<li>@Html.ActionLink("Inventar", "Index", "Inventars")</li>
+					}
 				</ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - PGD Črešnjevec</p>
+            <p style="float:left;">&copy; @DateTime.Now.Year - PGD Črešnjevec</p>
         </footer>
     </div>
 

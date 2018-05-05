@@ -10,109 +10,108 @@ using UpravljanjePGD.Models;
 
 namespace UpravljanjePGD.Controllers
 {
-	[Authorize(Roles ="Poveljstvo,Admin")]
-    public class PostsController : Controller
+	[Authorize(Roles = "Poveljstvo,Admin")]
+	public class InventarsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-		// GET: Posts
-		[Authorize]
-		public ActionResult Index()
+        // GET: Inventars
+        public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Inventars.ToList());
         }
 
-        // GET: Posts/Details/5
+        // GET: Inventars/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Inventar inventar = db.Inventars.Find(id);
+            if (inventar == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(inventar);
         }
 
-        // GET: Posts/Create
+        // GET: Inventars/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Posts/Create
+        // POST: Inventars/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,Date")] Post post)
+        public ActionResult Create([Bind(Include = "Id,Name,Number,Value,DateReceived,InspectionDate,NextInspectionDate,Expiration,State")] Inventar inventar)
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(post);
+                db.Inventars.Add(inventar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(post);
+            return View(inventar);
         }
 
-        // GET: Posts/Edit/5
+        // GET: Inventars/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Inventar inventar = db.Inventars.Find(id);
+            if (inventar == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(inventar);
         }
 
-        // POST: Posts/Edit/5
+        // POST: Inventars/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Body,Date")] Post post)
+        public ActionResult Edit([Bind(Include = "Id,Name,Number,Value,DateReceived,InspectionDate,NextInspectionDate,Expiration,State")] Inventar inventar)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Entry(inventar).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(post);
+            return View(inventar);
         }
 
-        // GET: Posts/Delete/5
+        // GET: Inventars/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Inventar inventar = db.Inventars.Find(id);
+            if (inventar == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(inventar);
         }
 
-        // POST: Posts/Delete/5
+        // POST: Inventars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
+            Inventar inventar = db.Inventars.Find(id);
+            db.Inventars.Remove(inventar);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

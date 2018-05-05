@@ -135,10 +135,10 @@ namespace UpravljanjePGD.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
+		//
+		// GET: /Account/Register
+		[Authorize(Roles = "Poveljstvo,Admin")]
+		public ActionResult Register()
         {
 			ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
 								.ToList(), "Name", "Name");
@@ -150,7 +150,7 @@ namespace UpravljanjePGD.Controllers
 
 		// POST: /Account/Register   
 		[HttpPost]
-		[AllowAnonymous]
+		[Authorize(Roles = "Poveljstvo,Admin")]
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Register(RegisterViewModel model)
 		{
@@ -167,7 +167,8 @@ namespace UpravljanjePGD.Controllers
 					// string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);   
 					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);   
 					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
-					//Assign Role to user Here      
+					//Assign Role to user Here
+					ViewBag.SuccessMessage = "Uspešno ste dodali uporabnika " + model.UserName + "!";
 					await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
 					//Ends Here    
 				}

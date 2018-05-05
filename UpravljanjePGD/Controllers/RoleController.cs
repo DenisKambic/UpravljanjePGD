@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UpravljanjePGD.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace UpravljanjePGD.Controllers
 {
@@ -99,5 +100,31 @@ namespace UpravljanjePGD.Controllers
 			context.SaveChanges();
 			return RedirectToAction("Index");
 		}
+
+		// GET: Posts/Delete/5
+		public ActionResult Delete(IdentityRole Role)
+		{
+			if (Role == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			if (context.Roles.Find(Role.Id) == null)
+			{
+				return HttpNotFound();
+			}
+			return View(context.Roles.Find(Role.Id));
+		}
+
+		// POST: Posts/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(IdentityRole Role)
+		{
+			context.Roles.Remove(context.Roles.Find(Role.Id));
+			context.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+
 	}
 }
